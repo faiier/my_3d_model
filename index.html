@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AR Models</title>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.8.4/firebase-database.js"></script>
 </head>
 <body>
     <h1>Model Viewer</h1>
@@ -14,7 +18,7 @@
     <h2>Question</h2>
     <p>จากโมเดลนี้เป็นล้อดีหรือล้อเสีย? เพราะอะไร?</p>
 
-    <form action="submit-answer.html" method="POST">
+    <form id="answerForm">
         <input type="radio" id="option1" name="answer" value="good_reason1">
         <label for="option1">ล้อดี - เพราะการออกแบบสมดุล</label><br>
 
@@ -30,6 +34,44 @@
         <button type="submit">Submit Answer</button>
     </form>
 
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script>
+      // Firebase configuration
+      const firebaseConfig = {
+  apiKey: "AIzaSyDPKHxp3yrDN_ZEgDXvDIS9tFECjwbAEiQ",
+  authDomain: "training-casting-app.firebaseapp.com",
+  databaseURL: "https://training-casting-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "training-casting-app",
+  storageBucket: "training-casting-app.firebasestorage.app",
+  messagingSenderId: "669646076066",
+  appId: "1:669646076066:web:52b7d83018e54dc73efffb",
+  measurementId: "G-292T5HD5VS"
+};
+
+      const app = firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+
+      document.getElementById('answerForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const selectedAnswer = document.querySelector('input[name="answer"]:checked')?.value;
+        if (selectedAnswer) {
+          const answerData = {
+            answer: selectedAnswer,
+            timestamp: new Date().toISOString(),
+          };
+
+          const answersRef = database.ref('answers');
+          answersRef.push(answerData)
+            .then(() => {
+              alert('คำตอบของคุณถูกบันทึกเรียบร้อย!');
+            })
+            .catch((error) => {
+              console.error('เกิดข้อผิดพลาดในการบันทึกคำตอบ: ', error);
+            });
+        } else {
+          alert('กรุณาเลือกคำตอบก่อนส่ง!');
+        }
+      });
+    </script>
 </body>
 </html>
