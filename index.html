@@ -8,9 +8,26 @@
 <body>
     <h1>Select a Model</h1>
     <ul>
-        <li><a href="wheel2.html">Model 1</a></li>
         <li><a href="Wheel1-4.html">Model 2</a></li>
-       
     </ul>
+
+    <h2>Question</h2>
+    <p>จากโมเดลนี้เป็นล้อดีหรือล้อเสีย? เพราะอะไร?</p>
+
+    <form action="submit-answer.html" method="POST">
+        <input type="radio" id="option1" name="answer" value="good_reason1">
+        <label for="option1">ล้อดี - เพราะการออกแบบสมดุล</label><br>
+
+        <input type="radio" id="option2" name="answer" value="good_reason2">
+        <label for="option2">ล้อดี - เพราะไม่มีความเสียหายให้เห็น</label><br>
+
+        <input type="radio" id="option3" name="answer" value="bad_reason1">
+        <label for="option3">ล้อเสีย - เพราะมีรอยแตก</label><br>
+
+        <input type="radio" id="option4" name="answer" value="bad_reason2">
+        <label for="option4">ล้อเสีย - เพราะการสึกหรอไม่เท่ากัน</label><br>
+
+        <button type="submit">Submit Answer</button>
+    </form>
 </body>
 </html>
