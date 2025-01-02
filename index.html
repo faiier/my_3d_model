@@ -6,10 +6,10 @@
     <title>AR Models</title>
 </head>
 <body>
-    <h1>Select a Model</h1>
-    <ul>
-        <li><a href="Wheel1-4.html">Model 2</a></li>
-    </ul>
+    <h1>Model Viewer</h1>
+
+    <!-- Embedding the model directly into the page -->
+    <model-viewer src="Wheel1-4.glb" alt="A 3D model of a wheel" auto-rotate camera-controls style="width: 100%; height: 500px;"></model-viewer>
 
     <h2>Question</h2>
     <p>จากโมเดลนี้เป็นล้อดีหรือล้อเสีย? เพราะอะไร?</p>
@@ -29,5 +29,7 @@
 
         <button type="submit">Submit Answer</button>
     </form>
+
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </body>
 </html>
