@@ -3,14 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR Models</title>
+    <title>Quiz with AR Model</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; display: flex; flex-direction: column; align-items: center; }
+        .question-container { margin-bottom: 20px; }
+        .options { list-style: none; padding: 0; }
+        .options li { margin-bottom: 10px; }
+        .timer { font-weight: bold; color: red; }
+        .model-container { width: 100%; height: 500px; margin-bottom: 20px; }
+    </style>
 </head>
 <body>
-    <h1>Model Viewer</h1>
+    <h1>Quiz with AR Model</h1>
 
-    <!-- Embedding the model directly into the page -->
-    <model-viewer src="Wheel1-4.glb" alt="A 3D model of a wheel" auto-rotate camera-controls style="width: 100%; height: 500px;"></model-viewer>
+    <!-- 3D Model Viewer -->
+    <div class="model-container">
+        <model-viewer src="Wheel1-4.glb" alt="A 3D model of a wheel" auto-rotate camera-controls></model-viewer>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="timer">Time left: <span id="time-left">30</span> seconds</div>
+    <div class="question-container">
+        <p id="question">Loading question...</p>
+        <ul id="options" class="options"></ul>
+    </div>
+    <button id="submit-btn" disabled>Submit</button>
 
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script src="quiz.js"></script>
 </body>
 </html>
